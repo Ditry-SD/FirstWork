@@ -15,6 +15,22 @@ class Main(Frame):
             "7", "8", "9", "-",
             "+/-", "0", "%", "X^2"
         ]
+
+        x = 10
+        y = 140
+        for bt in btns:
+            com = lambda x=bt: self.logicalc(x)
+            Button(text=bt, bg="#FFF",
+                   font=("Times New Roman", 15),
+                   command=com).place(x=x, y=y,
+                                      width=115,
+                                      height=79)
+            x += 117
+            if x > 400:
+                x = 10
+                y += 81
+
+
         pass
 
     def logicalc(self, operation):
