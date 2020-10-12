@@ -7,13 +7,17 @@ class Main(Frame):
         self.build()
 
     def build(self):
+        self.formula = "0"
+        self.lbl = Label(text=self.formula, font=("Times New Roman", 21, "bold"),
+                         bg="#000", foreground="#FFF")
+        self.lbl.place(x=11, y=50)
 
         btns = [
             "C", "DEL", "*", "=",
             "1", "2", "3", "/",
             "4", "5", "6", "+",
             "7", "8", "9", "-",
-            "+/-", "0", "%", "X^2"
+            "(", "0", ")", "X^2"
         ]
 
         x = 10
@@ -30,13 +34,32 @@ class Main(Frame):
                 x = 10
                 y += 81
 
-
         pass
 
     def logicalc(self, operation):
+
+        if operation == "C":
+            self.formula = ""
+        elif operation == "DEL":
+            self.formula = self.formula[0:-1]
+        elif operation == "X^2":
+            self.formula = str((eval(self.formula)) ** 2)
+        elif operation == "=":
+            self.formula = str(eval(self.formula))
+        else:
+            if self.formula == "0":
+                self.formula = ""
+            self.formula += operation
+        self.update()
+
         pass
 
-    def update():
+    def update(self):
+
+        if self.formula == "":
+            self.formula = "0"
+        self.lbl.configure(text=self.formula)
+
         pass
 
 
